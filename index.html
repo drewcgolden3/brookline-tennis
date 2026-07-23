@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brookline Tennis Academy — Tennis in the Woods | West Roxbury, MA</title>
+  <meta name="description" content="Year-round tennis lessons for kids and adults at The Roxbury Latin School, West Roxbury. Book private & semi-private lessons, junior clinics, adult clinics, and summer camp." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand" aria-label="Brookline Tennis Academy — home">
+        <img src="images/logo.png" alt="Brookline Tennis Academy" class="brand-logo" />
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#programs">Programs</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Visit</a>
+      </nav>
+
+      <div class="header-cta">
+        <a href="#book" class="btn btn-primary btn-sm" data-book="privateSemiPrivate">Book a Lesson</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- mobile drawer -->
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#programs">Programs</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Visit</a>
+      <a href="#book" class="btn btn-primary" data-book="privateSemiPrivate">Book a Lesson</a>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="top">
+    <div class="hero-media">
+      <img src="images/hero.jpg" alt="Junior player mid-swing on the courts at Brookline Tennis Academy" />
+      <div class="hero-scrim"></div>
+    </div>
+
+    <div class="wrap hero-content">
+      <p class="eyebrow eyebrow-light">West Roxbury, MA · Est. 1990</p>
+      <h1 class="hero-title">
+        Tennis in <span class="ital">the Woods.</span>
+      </h1>
+      <p class="hero-sub">
+        Year-round coaching for kids and adults on twelve courts nestled in the trees at
+        The Roxbury Latin School. Every level. Every age. One great game.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-primary btn-lg" data-book="privateSemiPrivate">
+          Book Private &amp; Semi-Private Lessons
+        </a>
+        <a href="#programs" class="btn btn-ghost-light btn-lg">
+          Register for a Program
+        </a>
+      </div>
+
+      <p class="hero-foot">One-on-one and small-group coaching &mdash; the fastest way to improve.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURED: PRIVATE / SEMI ===================== -->
+  <section class="feature" id="book">
+    <div class="wrap feature-grid">
+      <div class="feature-copy">
+        <p class="eyebrow">The priority pick</p>
+        <h2 class="feature-title">Private &amp; Semi-Private Lessons</h2>
+        <p class="feature-lead">
+          Your hour, your goals. Work one-on-one with a certified coach &mdash; or split the
+          court with a friend, partner, or child. It's the most direct path to a better serve,
+          a sharper game, and real confidence.
+        </p>
+
+        <ul class="feature-points">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><strong>Private</strong> — fully personalized. Spend the whole hour on exactly what you need.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><strong>Semi-private</strong> — bring a partner or family member. Great for doubles teams.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>All ages &amp; levels, from first-timers to tournament players.</span>
+          </li>
+        </ul>
+
+        <div class="feature-actions">
+          <a href="#" class="btn btn-primary btn-lg" data-book="privateSemiPrivate">Request Your Lesson</a>
+          <span class="feature-note">We'll reply to match you with a coach and times.</span>
+        </div>
+      </div>
+
+      <figure class="feature-figure">
+        <img src="images/action.jpg" alt="Coach working with a player during a private lesson" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRAMS ===================== -->
+  <section class="programs" id="programs">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Register &amp; book</p>
+        <h2 class="section-title">Find your program</h2>
+        <p class="section-lead">Pick a track below and register in a couple of taps. Junior and adult clinics run every season, plus our summer camp.</p>
+      </header>
+
+      <div class="prog-grid">
+
+        <!-- Kids -->
+        <article class="prog-card">
+          <div class="prog-media">
+            <img src="images/g1.jpg" alt="Kids tennis clinic in action" loading="lazy" />
+          </div>
+          <div class="prog-body">
+            <h3 class="prog-name">Kids Clinics</h3>
+            <p class="prog-desc">Junior clinics that build every core skill &mdash; strokes, footwork, etiquette, and a real love of the game.</p>
+            <div class="prog-actions">
+              <a href="#" class="btn btn-dark" data-book="kids.spring">Spring Clinics</a>
+              <a href="#" class="btn btn-outline" data-book="kids.camp">Summer Camp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Adults -->
+        <article class="prog-card">
+          <div class="prog-media">
+            <img src="images/g3.jpg" alt="Adult tennis clinic" loading="lazy" />
+          </div>
+          <div class="prog-body">
+            <h3 class="prog-name">Adult Clinics</h3>
+            <p class="prog-desc">Cardio and technique with game-based play. All levels welcome &mdash; grouped by ability on day one.</p>
+            <div class="prog-actions prog-actions-wrap">
+              <a href="#" class="btn btn-dark btn-sm" data-book="adults.spring">Spring</a>
+              <a href="#" class="btn btn-dark btn-sm" data-book="adults.summer1">Summer I</a>
+              <a href="#" class="btn btn-dark btn-sm" data-book="adults.summer2">Summer II</a>
+              <a href="#" class="btn btn-dark btn-sm" data-book="adults.fall">Fall</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Summer Camp -->
+        <article class="prog-card">
+          <div class="prog-media">
+            <img src="images/g5.jpg" alt="Summer tennis camp" loading="lazy" />
+          </div>
+          <div class="prog-body">
+            <h3 class="prog-name">Summer Junior Camp</h3>
+            <p class="prog-desc">Our flagship summer program &mdash; full days of tennis, games, and fun for junior players.</p>
+            <div class="prog-actions">
+              <a href="#" class="btn btn-dark" data-book="summerCamp">Register for Camp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Private (echoed here for completeness) -->
+        <article class="prog-card prog-card-accent">
+          <div class="prog-media">
+            <img src="images/g6.jpg" alt="Private tennis coaching" loading="lazy" />
+          </div>
+          <div class="prog-body">
+            <h3 class="prog-name">Private &amp; Semi-Private</h3>
+            <p class="prog-desc">One-on-one or small-group coaching tailored entirely to you. The fastest way to level up.</p>
+            <div class="prog-actions">
+              <a href="#" class="btn btn-primary" data-book="privateSemiPrivate">Request a Lesson</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- CIT secondary -->
+      <div class="prog-secondary">
+        <div>
+          <h3>Counselor-in-Training Program</h3>
+          <p>For teens 14&ndash;16 who love tennis and kids &mdash; build leadership skills alongside our senior staff.</p>
+        </div>
+        <a href="#" class="btn btn-outline" data-book="cit">Learn More &amp; Apply</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <figure class="about-figure">
+        <img src="images/courts.jpg" alt="The tennis courts at The Roxbury Latin School, surrounded by trees" loading="lazy" />
+      </figure>
+      <div class="about-copy">
+        <p class="eyebrow">About the academy</p>
+        <h2 class="section-title">Coaching that treats you like an athlete.</h2>
+        <p>
+          Led by Shelly Mars &mdash; running junior and adult programs since 1990 &mdash; our
+          certified coaches bring years of USTA and Division III collegiate experience to every
+          lesson. We develop players athletically, mentally, and emotionally, with a progressive
+          teaching method geared to each individual's ability.
+        </p>
+        <p>
+          You'll find us on twelve beautiful courts at The Roxbury Latin School's 117-acre campus
+          in West Roxbury &mdash; a quiet corner surrounded by trees. We call it Tennis in the Woods.
+        </p>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-num">1990</span><span class="stat-label">Coaching since</span></div>
+          <div class="stat"><span class="stat-num">12</span><span class="stat-label">Courts</span></div>
+          <div class="stat"><span class="stat-num">All</span><span class="stat-label">Ages &amp; levels</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section class="gallery" id="gallery">
+    <div class="wrap">
+      <header class="section-head section-head-center">
+        <p class="eyebrow">On the courts</p>
+        <h2 class="section-title">A look around</h2>
+      </header>
+      <div class="gallery-grid">
+        <figure><img src="images/g2.jpg" alt="Players on court" loading="lazy" /></figure>
+        <figure><img src="images/g4.jpg" alt="Tennis lesson" loading="lazy" /></figure>
+        <figure><img src="images/g7.jpg" alt="Junior player" loading="lazy" /></figure>
+        <figure><img src="images/g1.jpg" alt="Group clinic" loading="lazy" /></figure>
+        <figure><img src="images/g6.jpg" alt="Coaching moment" loading="lazy" /></figure>
+        <figure><img src="images/g3.jpg" alt="Adult clinic" loading="lazy" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BOOKING BANNER ===================== -->
+  <section class="cta-band">
+    <div class="wrap cta-band-inner">
+      <h2>Ready to play?</h2>
+      <p>Book a private or semi-private lesson, or register for a clinic &mdash; all in a couple of taps.</p>
+      <div class="cta-band-actions">
+        <a href="#" class="btn btn-primary btn-lg" data-book="privateSemiPrivate">Book a Lesson</a>
+        <a href="#programs" class="btn btn-ghost-light btn-lg">Browse Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VISIT / CONTACT ===================== -->
+  <section class="visit" id="visit">
+    <div class="wrap visit-grid">
+      <div class="visit-copy">
+        <p class="eyebrow">Visit us</p>
+        <h2 class="section-title">Come find us in the trees.</h2>
+
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">Where</span>
+            <a href="#" data-maps class="contact-value" id="venueLink">The Roxbury Latin School<br>101 St. Theresa Ave., West Roxbury, MA 02132</a>
+          </li>
+          <li>
+            <span class="contact-label">Call</span>
+            <a href="#" data-phone class="contact-value" id="phoneLink"></a>
+          </li>
+          <li>
+            <span class="contact-label">Email</span>
+            <a href="#" data-email class="contact-value" id="emailLink"></a>
+          </li>
+        </ul>
+
+        <a href="#" class="btn btn-primary" data-book="privateSemiPrivate">Book a Lesson</a>
+      </div>
+
+      <div class="visit-map">
+        <iframe
+          title="Map to The Roxbury Latin School"
+          src="https://www.google.com/maps?q=Roxbury+Latin+School+101+St+Theresa+Ave+West+Roxbury+MA+02132&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Brookline Tennis Academy" class="footer-logo" />
+        <p class="footer-tag">Tennis in the Woods &mdash; West Roxbury, MA</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#programs">Programs</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Visit</a>
+        <a href="#" data-book="privateSemiPrivate">Book a Lesson</a>
+      </nav>
+      <p class="footer-legal">
+        &copy; <span id="year"></span> Brookline Tennis Academy. Licensed by the local board of health,
+        in compliance with the Massachusetts Department of Public Health.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== BOOKING MODAL ===================== -->
+  <div class="modal-overlay" id="bookModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow" style="margin:0 0 6px">Brookline Tennis Academy</p>
+          <h2 class="modal-title" id="bookModalTitle">Book a Lesson</h2>
+          <p class="modal-sub" id="bookModalSub"></p>
+        </div>
+        <button class="modal-close" id="bookModalClose" type="button" aria-label="Close booking window">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="bookModalBody">
+        <!-- Acuity iframe (or demo placeholder) injected here by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
