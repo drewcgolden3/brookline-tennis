@@ -19,6 +19,18 @@ python3 -m http.server 8747   # → http://localhost:8747
 | `script.js` | Booking-button wiring, mobile nav, and the in-page booking modal |
 | `images/` | Photography (pulled from the current live site) |
 
+## Hero
+
+A slow cross-fading slideshow behind a single centred seal — modelled on
+[The Oaks Club](https://www.theoaksclub.com/): four photographs, no arrows, no
+dots, no captions. Slides, focal points, hold time and fade time all live in the
+`hero` block of **`config.js`**; `script.js` builds slides 2..n and cycles them.
+
+- Slide 1 is inlined in `index.html` so it paints without waiting on JS.
+- Optimised WebP (with JPG fallback) lives in `images/hero/`.
+- The cycle pauses when the tab is hidden or the hero scrolls out of view.
+- With `prefers-reduced-motion: reduce`, it holds on the first photograph.
+
 ## Booking
 
 All booking actions are driven from the `booking` block in **`config.js`** so the

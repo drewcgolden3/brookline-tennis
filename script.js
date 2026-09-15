@@ -302,6 +302,80 @@
     mapsLink.setAttribute("rel", "noopener");
   }
 
+  /* ---- hero slideshow ----
+     Slow cross-fade, no controls, no auto-advance while the tab is hidden or
+     the hero is scrolled past. Slide 1 is already in the markup, so this only
+     builds slides 2..n and then cycles. */
+  (function heroSlideshow() {
+    var host = document.getElementById("heroSlides");
+    var heroCfg = cfg.hero || {};
+    var slides = heroCfg.slides || [];
+    if (!host || slides.length < 2) return;
+
+    var hold = heroCfg.holdMs || 5000;
+    var fade = heroCfg.fadeMs || 3500;
+    document.querySelector(".hero").style.setProperty("--hero-fade", fade + "ms");
+
+    // Build every slide after the first (the first is inlined for fast paint).
+    slides.slice(1).forEach(function (s) {
+      var pic = document.createElement("picture");
+      pic.className = "hero-slide";
+      var src = document.createElement("source");
+      src.srcset = s.src + ".webp";
+      src.type = "image/webp";
+      var img = document.createElement("img");
+      img.src = s.src + ".jpg";
+      img.alt = "";
+      img.decoding = "async";
+      img.loading = "lazy";
+      if (s.focus) img.style.objectPosition = s.focus;
+      pic.appendChild(src);
+      pic.appendChild(img);
+      host.appendChild(pic);
+    });
+
+    // Apply the configured focal point to the inlined first slide too.
+    var firstImg = host.querySelector(".hero-slide img");
+    if (firstImg && slides[0] && slides[0].focus) {
+      firstImg.style.objectPosition = slides[0].focus;
+    }
+
+    var els = host.querySelectorAll(".hero-slide");
+    var index = 0;
+    var timer = null;
+    var inView = true;
+
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduced.matches) return; // hold on the first photograph, no cycling
+
+    function advance() {
+      els[index].classList.remove("is-active");
+      index = (index + 1) % els.length;
+      els[index].classList.add("is-active");
+      schedule();
+    }
+
+    function schedule() {
+      clearTimeout(timer);
+      if (!inView || document.hidden) return;
+      timer = setTimeout(advance, hold + fade);
+    }
+
+    document.addEventListener("visibilitychange", schedule);
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        function (entries) {
+          inView = entries[0].isIntersecting;
+          schedule();
+        },
+        { threshold: 0 }
+      ).observe(host);
+    }
+
+    schedule();
+  })();
+
   /* ---- sticky header shadow ---- */
   var header = document.getElementById("siteHeader");
   function onScroll() {

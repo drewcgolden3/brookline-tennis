@@ -29,6 +29,7 @@
   --shadow: 0 18px 44px -22px rgba(20, 40, 30, .38);
   --shadow-sm: 0 6px 20px -12px rgba(20, 40, 30, .3);
   --ease: cubic-bezier(.22, .61, .36, 1);
+  --header-h: 74px;
 }
 
 /* ---------- Reset-ish ---------- */
@@ -126,7 +127,7 @@ p { margin: 0; }
   transition: border-color .3s var(--ease), background .3s var(--ease), box-shadow .3s var(--ease);
 }
 .site-header.scrolled { border-color: var(--line); box-shadow: 0 6px 24px -20px rgba(20,40,30,.5); }
-.header-inner { display: flex; align-items: center; gap: 24px; height: 74px; }
+.header-inner { display: flex; align-items: center; gap: 24px; height: var(--header-h); }
 .brand { display: flex; align-items: center; }
 .brand-logo { height: 42px; width: auto; }
 .nav { display: flex; gap: 30px; margin-left: 12px; }
@@ -154,37 +155,131 @@ p { margin: 0; }
 .mobile-menu a:not(.btn) { padding: 12px 4px; font-weight: 500; border-bottom: 1px solid var(--line); }
 .mobile-menu .btn { margin-top: 12px; }
 
-/* ---------- Hero ---------- */
-.hero { position: relative; color: #fff; overflow: clip; }
-.hero-media { position: absolute; inset: 0; z-index: 0; }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
-.hero-scrim {
+/* ---------- Hero ----------
+   Full-bleed cross-fading slideshow behind a single centered seal.
+   Runs ~10vh taller than the fold so there is always a visible hint that
+   the page continues below. Fade timing is set from config.js. */
+.hero {
+  position: relative;
+  height: calc(100svh - var(--header-h) + 10vh);
+  min-height: 560px;
+  color: var(--cream);
+  overflow: clip;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+/* --- slides --- */
+.hero-slides { position: absolute; inset: 0; z-index: 0; }
+.hero-slide {
   position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity var(--hero-fade, 3500ms) linear;
+}
+.hero-slide.is-active { opacity: 1; }
+.hero-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Deliberately heavier than the reference sites' 10% scrim: these photos are
+   bright midday courts, and the cream seal has to clear 4.5:1 over all four. */
+.hero-scrim {
+  position: absolute; inset: 0; z-index: 1;
   background:
-    linear-gradient(180deg, rgba(15,28,20,.55) 0%, rgba(15,28,20,.25) 40%, rgba(15,28,20,.72) 100%),
-    linear-gradient(90deg, rgba(15,28,20,.6) 0%, rgba(15,28,20,.1) 60%);
+    radial-gradient(80% 62% at 50% 46%, rgba(12,26,18,.58) 0%, rgba(12,26,18,.28) 58%, rgba(12,26,18,.08) 100%),
+    linear-gradient(180deg, rgba(12,26,18,.42) 0%, rgba(12,26,18,.06) 32%, rgba(12,26,18,.06) 62%, rgba(12,26,18,.46) 100%);
 }
-.hero-content {
-  position: relative; z-index: 1;
-  padding-top: clamp(90px, 16vh, 170px);
-  padding-bottom: clamp(90px, 16vh, 170px);
-  max-width: 860px;
+
+/* --- centered seal --- */
+.hero-seal {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  padding: 0 24px;
+  transform: translateY(-2vh);
 }
-.hero-title {
+.hero-mark {
+  width: clamp(54px, 6vw, 74px);
+  height: auto;
+  margin-bottom: clamp(22px, 3vh, 34px);
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 1.5;
+  opacity: .9;
+}
+.hero-wordmark {
+  margin: 0;
+  display: flex; flex-direction: column; align-items: center;
+  gap: clamp(14px, 1.8vh, 20px);
+  text-shadow: 0 2px 34px rgba(8, 20, 14, .42);
+}
+.hero-word {
   font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(3rem, 8vw, 6rem);
-  letter-spacing: -.02em;
-  text-shadow: 0 2px 30px rgba(0,0,0,.25);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 7.4vw, 5.4rem);
+  line-height: 1;
+  letter-spacing: .04em;
+  text-transform: uppercase;
 }
-.hero-sub {
-  margin-top: 26px; max-width: 620px;
-  font-size: clamp(1.05rem, 1.8vw, 1.28rem);
-  color: rgba(255,255,255,.92);
-  line-height: 1.6;
+.hero-sub-word {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(.68rem, 1.15vw, .84rem);
+  line-height: 1;
+  letter-spacing: .34em;
+  text-indent: .34em; /* balance the trailing tracking so it stays optically centred */
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, .95);
 }
-.hero-actions { margin-top: 38px; display: flex; flex-wrap: wrap; gap: 14px; }
-.hero-foot { margin-top: 26px; font-size: .92rem; color: rgba(255,255,255,.78); }
+.hero-rule {
+  display: block;
+  width: 46px; height: 1px;
+  margin: clamp(24px, 3.4vh, 38px) 0 clamp(18px, 2.4vh, 24px);
+  background: rgba(247, 245, 239, .48);
+}
+.hero-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(.95rem, 1.5vw, 1.12rem);
+  color: rgba(247, 245, 239, .92);
+  text-shadow: 0 2px 24px rgba(8, 20, 14, .45);
+}
+
+/* --- scroll cue --- */
+.hero-cue {
+  position: absolute; z-index: 2;
+  /* the hero runs 10vh past the fold, so offset the cue to sit above it */
+  left: 50%; bottom: calc(10vh + clamp(26px, 4vh, 46px));
+  transform: translateX(-50%);
+  width: 44px; height: 64px;              /* 44px touch target */
+  display: grid; place-items: center;
+}
+.hero-cue-line {
+  position: relative;
+  width: 1px; height: 56px;
+  background: rgba(247, 245, 239, .26);
+  overflow: hidden;
+}
+.hero-cue-line::after {
+  content: "";
+  position: absolute; left: 0; top: 0;
+  width: 1px; height: 18px;
+  background: var(--cream);
+  animation: heroCue 2.6s var(--ease) infinite;
+}
+@keyframes heroCue {
+  0%   { transform: translateY(-20px); opacity: 0; }
+  35%  { opacity: 1; }
+  100% { transform: translateY(56px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { transition: none; }
+  .hero-cue-line::after { animation: none; top: 0; height: 56px; opacity: .55; }
+}
 
 /* ---------- Feature (Private/Semi) ---------- */
 .feature { padding: clamp(72px, 11vw, 128px) 0; background: var(--paper); }
@@ -454,6 +549,11 @@ a.contact-value:hover { color: var(--forest-600); }
   .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .mobile-menu:not([hidden]) { display: flex; }
 
+  :root { --header-h: 64px; }
+  .hero { height: calc(100svh - var(--header-h) + 5vh); }
+  .hero-cue { bottom: calc(5vh + clamp(20px, 3vh, 34px)); }
+  .hero-seal { transform: none; }
+
   .prog-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .prog-secondary { flex-direction: column; align-items: flex-start; }
@@ -462,6 +562,6 @@ a.contact-value:hover { color: var(--forest-600); }
 
 @media (max-width: 460px) {
   .wrap { padding: 0 18px; }
-  .hero-actions .btn, .cta-band-actions .btn { width: 100%; }
+  .cta-band-actions .btn { width: 100%; }
   .contact-list li { grid-template-columns: 1fr; gap: 4px; }
 }

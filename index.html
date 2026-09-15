@@ -49,32 +49,36 @@
 
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="top">
-    <div class="hero-media">
-      <img src="images/hero.jpg" alt="Junior player mid-swing on the courts at Brookline Tennis Academy" />
-      <div class="hero-scrim"></div>
+    <!-- Slides are injected from config.js `hero.slides` by script.js.
+         The first slide is inlined so it paints immediately (no JS wait). -->
+    <div class="hero-slides" id="heroSlides" aria-hidden="true">
+      <picture class="hero-slide is-active">
+        <source srcset="images/hero/courts.webp" type="image/webp" />
+        <img src="images/hero/courts.jpg" alt="" style="object-position:50% 50%"
+             fetchpriority="high" decoding="async" />
+      </picture>
     </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
 
-    <div class="wrap hero-content">
-      <p class="eyebrow eyebrow-light">West Roxbury, MA · Est. 1990</p>
-      <h1 class="hero-title">
-        Tennis in <span class="ital">the Woods.</span>
+    <div class="hero-seal">
+      <svg class="hero-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+        <circle cx="50" cy="50" r="46.5" />
+        <path d="M18 18a45 45 0 0 1 0 64" />
+        <path d="M82 18a45 45 0 0 0 0 64" />
+      </svg>
+
+      <h1 class="hero-wordmark">
+        <span class="hero-word">Brookline</span>
+        <span class="hero-sub-word">Tennis Academy</span>
       </h1>
-      <p class="hero-sub">
-        Year-round coaching for kids and adults on twelve courts nestled in the trees at
-        The Roxbury Latin School. Every level. Every age. One great game.
-      </p>
 
-      <div class="hero-actions">
-        <a href="#book" class="btn btn-primary btn-lg" data-book="privateSemiPrivate">
-          Book Private &amp; Semi-Private Lessons
-        </a>
-        <a href="#programs" class="btn btn-ghost-light btn-lg">
-          Register for a Program
-        </a>
-      </div>
-
-      <p class="hero-foot">One-on-one and small-group coaching &mdash; the fastest way to improve.</p>
+      <span class="hero-rule" aria-hidden="true"></span>
+      <p class="hero-tagline">Tennis in the Woods</p>
     </div>
+
+    <a class="hero-cue" href="#book" aria-label="Scroll to lessons">
+      <span class="hero-cue-line" aria-hidden="true"></span>
+    </a>
   </section>
 
   <!-- ===================== FEATURED: PRIVATE / SEMI ===================== -->

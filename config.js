@@ -17,6 +17,39 @@ window.SITE_CONFIG = {
     logo: "images/logo.png",
   },
 
+  /* ---- Hero slideshow ----
+     A slow cross-fade behind the centered seal. Add/remove/reorder slides
+     freely — the sequence below runs place → coaching → adults → juniors.
+     `focus` is the CSS object-position, i.e. the part of the photo that must
+     survive the crop on a tall phone screen. Tune it per image.
+     `holdMs` is how long each slide sits still; `fadeMs` is the cross-fade. */
+  hero: {
+    holdMs: 5000,
+    fadeMs: 3500,
+    slides: [
+      {
+        src: "images/hero/courts",
+        focus: "50% 50%",
+        alt: "Aerial view of the twelve tennis courts set among the trees at The Roxbury Latin School",
+      },
+      {
+        src: "images/hero/action",
+        focus: "50% 38%",
+        alt: "A coach guiding a young player through a forehand during a lesson",
+      },
+      {
+        src: "images/hero/net",
+        focus: "50% 42%",
+        alt: "An adult player stretching for a volley at the net",
+      },
+      {
+        src: "images/hero/junior",
+        focus: "55% 35%",
+        alt: "A junior player in a Brookline Tennis Academy shirt striking a forehand",
+      },
+    ],
+  },
+
   /* ---- Contact / location ---- */
   contact: {
     venueName: "The Roxbury Latin School",
