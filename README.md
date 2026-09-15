@@ -46,9 +46,15 @@ dots, no captions. Slides, focal points, hold time and fade time all live in the
 - The cycle pauses when the tab is hidden or the hero scrolls out of view.
 - With `prefers-reduced-motion: reduce`, it holds on the first photograph.
 - The centrepiece is `images/logo-reverse.png` — the real logo with the black
-  name knocked out to cream, since `logo.png` sets it in black and vanishes
-  against the photography. Both are 400px-wide rasters; a vector source from
-  the client would sharpen this considerably.
+  name knocked out to cream, since the stock logo sets it in black and vanishes
+  against the photography.
+- **The logo artwork has been edited.** The wordmark is set in a monospace
+  typewriter face whose lowercase `l` carries a top-left flag, so "brookline"
+  read as "brook1ine". That flag is painted out in both `logo.png` and
+  `logo-reverse.png`. The untouched original is kept at
+  `images/logo-original.png` — restore it if the client prefers the stock mark.
+- All three are 400px-wide rasters. A vector source from the client would let
+  these be regenerated cleanly at any size.
 
 ## Booking
 
