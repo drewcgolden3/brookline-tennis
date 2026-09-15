@@ -376,30 +376,57 @@
     schedule();
   })();
 
-  /* ---- sticky header shadow ---- */
-  var header = document.getElementById("siteHeader");
-  function onScroll() {
-    if (!header) return;
-    header.classList.toggle("scrolled", window.scrollY > 12);
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  /* ---- mobile menu ---- */
+  /* ---- nav drawer ----
+     One menu at every width. Opens below the bar, closes on Escape, on an
+     outside click, on a link, and when the viewport is resized past a
+     breakpoint (so it can't be left open in a layout it wasn't sized for). */
   var toggle = document.getElementById("navToggle");
-  var menu = document.getElementById("mobileMenu");
-  if (toggle && menu) {
+  var drawer = document.getElementById("navDrawer");
+
+  if (toggle && drawer) {
+    function setDrawer(open) {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      drawer.classList.toggle("is-open", open);
+    }
+
+    function closeDrawer(refocus) {
+      if (toggle.getAttribute("aria-expanded") !== "true") return;
+      setDrawer(false);
+      if (refocus) toggle.focus();
+    }
+
+    setDrawer(false);
+
     toggle.addEventListener("click", function () {
       var open = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!open));
-      menu.hidden = open;
+      setDrawer(!open);
+      if (!open) {
+        var first = drawer.querySelector("a");
+        if (first) first.focus();
+      }
     });
-    menu.querySelectorAll("a").forEach(function (a) {
+
+    drawer.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () {
-        toggle.setAttribute("aria-expanded", "false");
-        menu.hidden = true;
+        closeDrawer(false);
       });
     });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeDrawer(true);
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!drawer.classList.contains("is-open")) return;
+      if (drawer.contains(e.target) || toggle.contains(e.target)) return;
+      closeDrawer(false);
+    });
+
+    var wide = window.matchMedia("(min-width: 781px)");
+    (wide.addEventListener ? wide.addEventListener.bind(wide, "change") : wide.addListener.bind(wide))(
+      function () { closeDrawer(false); }
+    );
   }
 
   /* ---- year ---- */

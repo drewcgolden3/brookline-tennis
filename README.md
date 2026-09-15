@@ -19,6 +19,21 @@ python3 -m http.server 8747   # → http://localhost:8747
 | `script.js` | Booking-button wiring, mobile nav, and the in-page booking modal |
 | `images/` | Photography (pulled from the current live site) |
 
+## Navigation
+
+One bar at every width, after [The Oaks Club](https://www.theoaksclub.com/):
+menu on the left, wordmark optically centred on the page, a single action on
+the right. **It does not change on scroll** — no fade-in, no shrink, no
+hide-on-scroll-down. All of the navigation lives in a drawer that expands
+beneath the bar, so the bar itself never has to grow.
+
+- Collapse uses `grid-template-rows: 0fr -> 1fr` plus `visibility`, so the
+  links leave the tab order and the accessibility tree while closed.
+- Closes on Escape (returning focus to the button), on an outside click, on a
+  link, and on a breakpoint change.
+- A `<noscript>` block expands the drawer and hides the toggle, so the menu
+  still works without JavaScript.
+
 ## Hero
 
 A slow cross-fading slideshow behind a single centred seal — modelled on

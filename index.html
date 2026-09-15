@@ -11,39 +11,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.nav-drawer { grid-template-rows: 1fr; opacity: 1; }
+    .nav-drawer-inner { visibility: visible; }
+    .menu-btn { display: none; }</style></noscript>
 </head>
 <body>
 
   <!-- ===================== HEADER ===================== -->
   <header class="site-header" id="siteHeader">
-    <div class="wrap header-inner">
-      <a href="#top" class="brand" aria-label="Brookline Tennis Academy — home">
-        <img src="images/logo.png" alt="Brookline Tennis Academy" class="brand-logo" />
+    <div class="wrap header-bar">
+      <button class="menu-btn" id="navToggle" aria-expanded="false" aria-controls="navDrawer">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+        <span class="menu-label">Menu</span>
+      </button>
+
+      <a href="#top" class="header-wordmark" aria-label="Brookline Tennis Academy — home">
+        <span class="hw-main">Brookline</span>
+        <span class="hw-sub">Tennis Academy</span>
       </a>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="#programs">Programs</a>
-        <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#visit">Visit</a>
-      </nav>
-
-      <div class="header-cta">
-        <a href="#book" class="btn btn-primary btn-sm" data-book="privateSemiPrivate">Book a Lesson</a>
+      <div class="header-actions">
+        <a href="#book" class="nav-cta" data-book="privateSemiPrivate">
+          <span class="nav-cta-long">Book a Lesson</span>
+          <span class="nav-cta-short">Book</span>
+        </a>
       </div>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
 
-    <!-- mobile drawer -->
-    <div class="mobile-menu" id="mobileMenu" hidden>
-      <a href="#programs">Programs</a>
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#visit">Visit</a>
-      <a href="#book" class="btn btn-primary" data-book="privateSemiPrivate">Book a Lesson</a>
+    <!-- Expands beneath the bar. Holds the whole of the navigation at every width. -->
+    <div class="nav-drawer" id="navDrawer">
+      <div class="nav-drawer-inner wrap">
+        <nav class="drawer-nav" aria-label="Primary">
+          <a href="#programs">Programs</a>
+          <a href="#book">Private Lessons</a>
+          <a href="#about">About</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#visit">Visit</a>
+        </nav>
+        <a href="#book" class="drawer-cta" data-book="privateSemiPrivate">Book a Lesson</a>
+      </div>
     </div>
   </header>
 
