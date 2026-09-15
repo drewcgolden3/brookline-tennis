@@ -22,7 +22,9 @@ window.SITE_CONFIG = {
      freely — the sequence below runs place → coaching → adults → juniors.
      `focus` is the CSS object-position, i.e. the part of the photo that must
      survive the crop on a tall phone screen. Tune it per image.
-     `holdMs` is how long each slide sits still; `fadeMs` is the cross-fade. */
+     `holdMs` is how long each slide sits still; `fadeMs` is the cross-fade.
+     `alt` is a note for whoever edits this file — the slideshow itself is
+     decorative (the <h1> carries the meaning), so the images ship alt="". */
   hero: {
     holdMs: 5000,
     fadeMs: 3500,
