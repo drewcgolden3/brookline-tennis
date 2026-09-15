@@ -45,6 +45,10 @@ dots, no captions. Slides, focal points, hold time and fade time all live in the
 - Optimised WebP (with JPG fallback) lives in `images/hero/`.
 - The cycle pauses when the tab is hidden or the hero scrolls out of view.
 - With `prefers-reduced-motion: reduce`, it holds on the first photograph.
+- The centrepiece is `images/logo-reverse.png` — the real logo with the black
+  name knocked out to cream, since `logo.png` sets it in black and vanishes
+  against the photography. Both are 400px-wide rasters; a vector source from
+  the client would sharpen this considerably.
 
 ## Booking
 
