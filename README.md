@@ -9,6 +9,40 @@ Static site — no build step. Open `index.html`, or serve locally:
 python3 -m http.server 8747   # → http://localhost:8747
 ```
 
+## Pages
+
+Six standalone pages, all sharing `styles.css`, `script.js` and `config.js`:
+
+| File | Purpose |
+|------|---------|
+| `index.html` | Hero, private-lesson feature, programs teaser |
+| `programs.html` | Junior / adult clinics, camp, CIT |
+| `private-lessons.html` | The priority booking path |
+| `about.html` | The academy, staff credentials, gallery |
+| `gallery.html` | Photographs |
+| `visit.html` | Address, phone, email, map |
+
+The header, footer and booking modal are **duplicated into each page** rather
+than injected by JavaScript, so every page is crawlable and works without JS.
+The cost is that a change to the header means editing six files — worth
+knowing before a nav edit. `images/logo-nav.png` sits in the bar on every inner
+page; on the home page that slot is an empty placeholder that the hero logo
+flies into.
+
+## Scroll reveals
+
+`[data-reveal]` fades a block in once, on entry, and never re-hides it —
+opacity only, no movement, matching both reference sites. `--reveal-delay`
+staggers grid children by 45ms. `[data-parallax="1|-1"]` drifts an image by
+±9% of its height as it crosses the viewport; neighbouring images run in
+opposite directions, which is where the sense of depth comes from.
+
+The hidden state is scoped to a `.reveals-armed` class that JS adds only when
+it is about to start observing, so a script failure leaves the content visible
+instead of producing a blank page. A timer and a `visibilitychange` sweep
+reveal anything at or above the fold, because observer callbacks are not
+delivered to a backgrounded tab.
+
 ## Structure
 
 | File | Purpose |

@@ -488,6 +488,85 @@
     );
   }
 
+  /* ---- scroll reveals ----
+     Opacity only. Both reference sites animate nothing but opacity on entry,
+     and once revealed an element stays revealed — nothing re-fades on the way
+     back up, which is what makes a long page feel calm rather than twitchy. */
+  (function reveals() {
+    var items = document.querySelectorAll("[data-reveal]");
+    if (!items.length) return;
+
+    if (!("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;                              // never armed, so everything stays visible
+    }
+
+    document.documentElement.classList.add("reveals-armed");
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("is-in");
+        io.unobserve(e.target);           // reveal once, never again
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.01 });
+
+    items.forEach(function (el) { io.observe(el); });
+
+    // Safety net. Observer callbacks are not delivered in a backgrounded tab,
+    // so a page restored mid-scroll can otherwise sit there blank. Sweep
+    // anything already at or above the fold and reveal it outright.
+    function sweep() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      items.forEach(function (el) {
+        if (el.classList.contains("is-in")) return;
+        if (el.getBoundingClientRect().top < vh * 0.95) {
+          el.classList.add("is-in");
+          io.unobserve(el);
+        }
+      });
+    }
+    setTimeout(sweep, 1200);
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) sweep();
+    });
+  })();
+
+  /* ---- image parallax ----
+     Scroll-linked drift, clamped to +/-9% of image height. data-parallax="-1"
+     runs an image against its neighbour, which is what produces the sense of
+     depth on theoaksclub.com. */
+  (function parallax() {
+    var imgs = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+    if (!imgs.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var RANGE = 9;   // percent of image height
+    var ticking = false;
+
+    function render() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      imgs.forEach(function (img) {
+        var host = img.parentElement.getBoundingClientRect();
+        if (host.bottom < -200 || host.top > vh + 200) return;   // off-screen, skip
+        var centre = host.top + host.height / 2;
+        var p = (centre - vh / 2) / (vh / 2 + host.height / 2);  // -1 .. 1
+        p = Math.max(-1, Math.min(1, p));
+        var dir = parseFloat(img.getAttribute("data-parallax")) || 1;
+        img.style.transform = "translate3d(0," + (p * RANGE * dir).toFixed(2) + "%,0)";
+      });
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { render(); ticking = false; });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    render();
+  })();
+
   /* ---- year ---- */
   var year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();

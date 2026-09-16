@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Brookline Tennis Academy</title>
+  <meta name="description" content="Photographs from the courts at Brookline Tennis Academy — junior clinics, adult programs, and summer camp in West Roxbury, MA." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.nav-drawer { grid-template-rows: 1fr; opacity: 1; }
+    .nav-drawer-inner { visibility: visible; }
+    .menu-btn { display: none; }
+    [data-reveal] { opacity: 1; }</style></noscript>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-bar">
+      <button class="menu-btn" id="navToggle" aria-expanded="false" aria-controls="navDrawer">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+        <span class="menu-label">Menu</span>
+      </button>
+
+      <a href="index.html" class="nav-logo-target"
+         aria-label="Brookline Tennis Academy — home">
+        <img src="images/logo-nav.png" alt="Brookline Tennis Academy"
+             width="800" height="432" />
+      </a>
+
+      <div class="header-actions">
+        <a href="private-lessons.html" class="nav-cta" data-book="privateSemiPrivate">
+          <span class="nav-cta-long">Book a Lesson</span>
+          <span class="nav-cta-short">Book</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Expands beneath the bar. Holds the whole of the navigation at every width. -->
+    <div class="nav-drawer" id="navDrawer">
+      <div class="nav-drawer-inner wrap">
+        <nav class="drawer-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="programs.html">Programs</a>
+          <a href="private-lessons.html">Private Lessons</a>
+          <a href="about.html">About</a>
+          <a href="gallery.html" aria-current="page">Gallery</a>
+          <a href="visit.html">Visit</a>
+        </nav>
+        <a href="private-lessons.html" class="drawer-cta" data-book="privateSemiPrivate">Book a Lesson</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== PAGE HEAD ===================== -->
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>On the courts</p>
+      <h1 class="page-title" data-reveal>A look around</h1>
+      <p class="page-lead" data-reveal>Junior clinics, adult programs, and camp days on our twelve courts.</p>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="wrap">
+      <div class="gallery-grid">
+        <figure data-reveal style="--reveal-delay:0ms"><img src="images/g2.jpg" alt="Players on court" loading="lazy" /></figure>
+        <figure data-reveal style="--reveal-delay:45ms"><img src="images/g4.jpg" alt="Tennis lesson" loading="lazy" /></figure>
+        <figure data-reveal style="--reveal-delay:90ms"><img src="images/g7.jpg" alt="Junior player" loading="lazy" /></figure>
+        <figure data-reveal style="--reveal-delay:135ms"><img src="images/g1.jpg" alt="Group clinic" loading="lazy" /></figure>
+        <figure data-reveal style="--reveal-delay:180ms"><img src="images/g6.jpg" alt="Coaching moment" loading="lazy" /></figure>
+        <figure data-reveal style="--reveal-delay:225ms"><img src="images/g3.jpg" alt="Adult clinic" loading="lazy" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-band-inner" data-reveal>
+      <h2>Ready to play?</h2>
+      <p>Book a private or semi-private lesson, or register for a clinic &mdash; all in a couple of taps.</p>
+      <div class="cta-band-actions">
+        <a href="#" class="btn btn-primary btn-lg" data-book="privateSemiPrivate">Book a Lesson</a>
+        <a href="programs.html" class="btn btn-ghost-light btn-lg">Browse Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Brookline Tennis Academy" class="footer-logo" />
+        <p class="footer-tag">Tennis in the Woods &mdash; West Roxbury, MA</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="programs.html">Programs</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="visit.html">Visit</a>
+        <a href="#" data-book="privateSemiPrivate">Book a Lesson</a>
+      </nav>
+      <p class="footer-legal">
+        &copy; <span id="year"></span> Brookline Tennis Academy. Licensed by the local board of health,
+        in compliance with the Massachusetts Department of Public Health.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== BOOKING MODAL ===================== -->
+  <div class="modal-overlay" id="bookModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow" style="margin:0 0 6px">Brookline Tennis Academy</p>
+          <h2 class="modal-title" id="bookModalTitle">Book a Lesson</h2>
+          <p class="modal-sub" id="bookModalSub"></p>
+        </div>
+        <button class="modal-close" id="bookModalClose" type="button" aria-label="Close booking window">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="bookModalBody">
+        <!-- Acuity iframe (or demo placeholder) injected here by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

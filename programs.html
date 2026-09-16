@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brookline Tennis Academy — Tennis in the Woods | West Roxbury, MA</title>
-  <meta name="description" content="Year-round tennis lessons for kids and adults on twelve courts at The Roxbury Latin School, West Roxbury. Private lessons, junior clinics, adult clinics, and summer camp." />
+  <title>Programs — Junior & Adult Clinics, Camp | Brookline Tennis Academy</title>
+  <meta name="description" content="Junior clinics, adult clinics, summer camp, and the Counselor-in-Training program at Brookline Tennis Academy in West Roxbury, MA." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,8 +25,11 @@
         <span class="menu-label">Menu</span>
       </button>
 
-      <span class="nav-logo-target is-flight-target" id="navLogoTarget"
-            aria-hidden="true"></span>
+      <a href="index.html" class="nav-logo-target"
+         aria-label="Brookline Tennis Academy — home">
+        <img src="images/logo-nav.png" alt="Brookline Tennis Academy"
+             width="800" height="432" />
+      </a>
 
       <div class="header-actions">
         <a href="private-lessons.html" class="nav-cta" data-book="privateSemiPrivate">
@@ -40,8 +43,8 @@
     <div class="nav-drawer" id="navDrawer">
       <div class="nav-drawer-inner wrap">
         <nav class="drawer-nav" aria-label="Primary">
-          <a href="index.html" aria-current="page">Home</a>
-          <a href="programs.html">Programs</a>
+          <a href="index.html">Home</a>
+          <a href="programs.html" aria-current="page">Programs</a>
           <a href="private-lessons.html">Private Lessons</a>
           <a href="about.html">About</a>
           <a href="gallery.html">Gallery</a>
@@ -52,90 +55,17 @@
     </div>
   </header>
 
-  <section class="hero" id="top">
-    <!-- Slides are injected from config.js `hero.slides` by script.js.
-         The first slide is inlined so it paints immediately (no JS wait). -->
-    <div class="hero-slides" id="heroSlides" aria-hidden="true">
-      <picture class="hero-slide is-active">
-        <source srcset="images/hero/courts.webp" type="image/webp" />
-        <img src="images/hero/courts.jpg" alt="" style="object-position:50% 50%"
-             fetchpriority="high" decoding="async" />
-      </picture>
-    </div>
-    <div class="hero-scrim" aria-hidden="true"></div>
-
-    <div class="hero-seal">
-      <h1 class="hero-wordmark">
-        <!-- The slot holds the space; .hero-logo is position:fixed and is flown
-             from here into the nav bar on scroll by script.js. Two stacked
-             images cross-fade en route: the cream knockout reads over the
-             photography, the dark one over the white bar. -->
-        <span class="hero-logo-slot">
-          <span class="hero-logo" id="heroLogo">
-            <img class="hl-img hl-light" src="images/logo-reverse.png"
-                 alt="Brookline Tennis Academy" width="800" height="432"
-                 fetchpriority="high" />
-            <img class="hl-img hl-dark" src="images/logo-nav.png"
-                 alt="" aria-hidden="true" width="800" height="432" />
-          </span>
-        </span>
-      </h1>
-
-      <span class="hero-rule" aria-hidden="true"></span>
-      <p class="hero-tagline">Tennis in the Woods</p>
-    </div>
-
-    <a class="hero-cue" href="private-lessons.html" aria-label="Scroll to lessons">
-      <span class="hero-cue-line" aria-hidden="true"></span>
-    </a>
-  </section>
-
-  <section class="feature" id="book">
-    <div class="wrap feature-grid">
-      <div class="feature-copy" data-reveal>
-        <p class="eyebrow">The priority pick</p>
-        <h2 class="feature-title">Private &amp; Semi-Private Lessons</h2>
-        <p class="feature-lead">
-          Your hour, your goals. Work one-on-one with a certified coach &mdash; or split the
-          court with a friend, partner, or child. It's the most direct path to a better serve,
-          a sharper game, and real confidence.
-        </p>
-
-        <ul class="feature-points">
-          <li>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span><strong>Private</strong> — fully personalized. Spend the whole hour on exactly what you need.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span><strong>Semi-private</strong> — bring a partner or family member. Great for doubles teams.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span>All ages &amp; levels, from first-timers to tournament players.</span>
-          </li>
-        </ul>
-
-        <div class="feature-actions">
-          <a href="#" class="btn btn-primary btn-lg" data-book="privateSemiPrivate">Request Your Lesson</a>
-          <span class="feature-note">We'll reply to match you with a coach and times.</span>
-        </div>
-      </div>
-
-      <figure class="feature-figure p-media" data-reveal>
-        <img data-parallax="1" src="images/action.jpg" alt="Coach working with a player during a private lesson" />
-      </figure>
+  <!-- ===================== PAGE HEAD ===================== -->
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Register &amp; book</p>
+      <h1 class="page-title" data-reveal>Programs</h1>
+      <p class="page-lead" data-reveal>Junior and adult clinics run every season, plus summer camp and our Counselor-in-Training track. Pick a program and register in a couple of taps.</p>
     </div>
   </section>
 
   <section class="programs" id="programs">
     <div class="wrap">
-      <header class="section-head" data-reveal>
-        <p class="eyebrow">Register &amp; book</p>
-        <h2 class="section-title">Find your program</h2>
-        <p class="section-lead">Pick a track below and register in a couple of taps. Junior and adult clinics run every season, plus our summer camp.</p>
-      </header>
-
       <div class="prog-grid">
 
         <!-- Kids -->

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visit &amp; Contact | Brookline Tennis Academy</title>
+  <meta name="description" content="Find Brookline Tennis Academy at The Roxbury Latin School, 101 St. Theresa Ave., West Roxbury, MA. Phone, email, and directions." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.nav-drawer { grid-template-rows: 1fr; opacity: 1; }
+    .nav-drawer-inner { visibility: visible; }
+    .menu-btn { display: none; }
+    [data-reveal] { opacity: 1; }</style></noscript>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-bar">
+      <button class="menu-btn" id="navToggle" aria-expanded="false" aria-controls="navDrawer">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+        <span class="menu-label">Menu</span>
+      </button>
+
+      <a href="index.html" class="nav-logo-target"
+         aria-label="Brookline Tennis Academy — home">
+        <img src="images/logo-nav.png" alt="Brookline Tennis Academy"
+             width="800" height="432" />
+      </a>
+
+      <div class="header-actions">
+        <a href="private-lessons.html" class="nav-cta" data-book="privateSemiPrivate">
+          <span class="nav-cta-long">Book a Lesson</span>
+          <span class="nav-cta-short">Book</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Expands beneath the bar. Holds the whole of the navigation at every width. -->
+    <div class="nav-drawer" id="navDrawer">
+      <div class="nav-drawer-inner wrap">
+        <nav class="drawer-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="programs.html">Programs</a>
+          <a href="private-lessons.html">Private Lessons</a>
+          <a href="about.html">About</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="visit.html" aria-current="page">Visit</a>
+        </nav>
+        <a href="private-lessons.html" class="drawer-cta" data-book="privateSemiPrivate">Book a Lesson</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== PAGE HEAD ===================== -->
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Visit us</p>
+      <h1 class="page-title" data-reveal>Come find us in the trees</h1>
+      <p class="page-lead" data-reveal>Twelve courts on The Roxbury Latin School&rsquo;s 117-acre campus in West Roxbury.</p>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap visit-grid">
+      <div class="visit-copy" data-reveal>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">Where</span>
+            <a href="#" data-maps class="contact-value" id="venueLink">The Roxbury Latin School<br>101 St. Theresa Ave., West Roxbury, MA 02132</a>
+          </li>
+          <li>
+            <span class="contact-label">Call</span>
+            <a href="#" data-phone class="contact-value" id="phoneLink"></a>
+          </li>
+          <li>
+            <span class="contact-label">Email</span>
+            <a href="#" data-email class="contact-value" id="emailLink"></a>
+          </li>
+        </ul>
+
+        <a href="#" class="btn btn-primary" data-book="privateSemiPrivate">Book a Lesson</a>
+      </div>
+
+      <div class="visit-map" data-reveal>
+        <iframe
+          title="Map to The Roxbury Latin School"
+          src="https://www.google.com/maps?q=Roxbury+Latin+School+101+St+Theresa+Ave+West+Roxbury+MA+02132&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-band-inner" data-reveal>
+      <h2>Ready to play?</h2>
+      <p>Book a private or semi-private lesson, or register for a clinic &mdash; all in a couple of taps.</p>
+      <div class="cta-band-actions">
+        <a href="#" class="btn btn-primary btn-lg" data-book="privateSemiPrivate">Book a Lesson</a>
+        <a href="programs.html" class="btn btn-ghost-light btn-lg">Browse Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Brookline Tennis Academy" class="footer-logo" />
+        <p class="footer-tag">Tennis in the Woods &mdash; West Roxbury, MA</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="programs.html">Programs</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="visit.html">Visit</a>
+        <a href="#" data-book="privateSemiPrivate">Book a Lesson</a>
+      </nav>
+      <p class="footer-legal">
+        &copy; <span id="year"></span> Brookline Tennis Academy. Licensed by the local board of health,
+        in compliance with the Massachusetts Department of Public Health.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== BOOKING MODAL ===================== -->
+  <div class="modal-overlay" id="bookModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow" style="margin:0 0 6px">Brookline Tennis Academy</p>
+          <h2 class="modal-title" id="bookModalTitle">Book a Lesson</h2>
+          <p class="modal-sub" id="bookModalSub"></p>
+        </div>
+        <button class="modal-close" id="bookModalClose" type="button" aria-label="Close booking window">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="bookModalBody">
+        <!-- Acuity iframe (or demo placeholder) injected here by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
