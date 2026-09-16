@@ -9,7 +9,7 @@ are alpha-weighted with a soft colour falloff so the source's anti-aliasing
 survives — threshold the 400px source directly and potrace reproduces the pixel
 staircase, which makes the ball come out polygonal at hero size.
 
-Writes images/logo.svg, images/logo-reverse.svg, images/logo-nav.svg.
+Writes images/logo.svg, logo-reverse.svg, logo-nav.svg, logo-hero.svg.
 Requires: potrace, pillow.
 """
 import math, os, re, subprocess, sys, tempfile
@@ -73,3 +73,6 @@ def build(path, ink, credit_fill, include_credit=True, centre=False):
 build("logo.svg", INK, CREDIT)                                   # light backgrounds, footer
 build("logo-reverse.svg", CREAM, CREAM)                          # over photography
 build("logo-nav.svg", INK, CREDIT, include_credit=False, centre=True)   # the nav bar
+build("logo-hero.svg", CREAM, CREAM, include_credit=False, centre=True) # hero: the credit
+                                                                        # line is set as type
+                                                                        # beneath the mark
