@@ -25,6 +25,8 @@
         <span class="menu-label">Menu</span>
       </button>
 
+      <span class="nav-logo-target" id="navLogoTarget" aria-hidden="true"></span>
+
       <div class="header-actions">
         <a href="#book" class="nav-cta" data-book="privateSemiPrivate">
           <span class="nav-cta-long">Book a Lesson</span>
@@ -63,11 +65,19 @@
 
     <div class="hero-seal">
       <h1 class="hero-wordmark">
-        <!-- Reversed (knocked-out) logo: the stock logo.png sets the name in
-             black, which disappears against the hero photography. -->
-        <img class="hero-logo" src="images/logo-reverse.png"
-             alt="Brookline Tennis Academy" width="800" height="432"
-             fetchpriority="high" />
+        <!-- The slot holds the space; .hero-logo is position:fixed and is flown
+             from here into the nav bar on scroll by script.js. Two stacked
+             images cross-fade en route: the cream knockout reads over the
+             photography, the dark one over the white bar. -->
+        <span class="hero-logo-slot">
+          <span class="hero-logo" id="heroLogo">
+            <img class="hl-img hl-light" src="images/logo-reverse.png"
+                 alt="Brookline Tennis Academy" width="800" height="432"
+                 fetchpriority="high" />
+            <img class="hl-img hl-dark" src="images/logo-nav.png"
+                 alt="" aria-hidden="true" width="800" height="432" />
+          </span>
+        </span>
       </h1>
 
       <span class="hero-rule" aria-hidden="true"></span>

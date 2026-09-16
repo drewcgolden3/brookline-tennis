@@ -376,6 +376,65 @@
     schedule();
   })();
 
+  /* ---- hero logo flies into the nav bar ----
+     The logo is position:fixed over an in-flow slot. While scrollY is inside
+     the travel distance the translation is exactly -scrollY, so it rides up
+     with the page rather than sliding independently, shrinking as it goes and
+     parking in the bar. Two stacked images cross-fade near the end: cream
+     reads over the photography, dark over the white bar. */
+  (function heroLogoFlight() {
+    var logo = document.getElementById("heroLogo");
+    var slot = document.querySelector(".hero-logo-slot");
+    var target = document.getElementById("navLogoTarget");
+    if (!logo || !slot || !target) return;
+
+    var light = logo.querySelector(".hl-light");
+    var dark = logo.querySelector(".hl-dark");
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    var distance = 1, endScale = 1, ticking = false;
+    logo.classList.add("is-flying");   // no-JS leaves it sitting in its slot
+
+    function measure() {
+      logo.style.transform = "none";
+      logo.style.top = "0px";
+
+      var s = slot.getBoundingClientRect();
+      var startTop = s.top + window.scrollY;   // at scrollY 0 this is also the viewport top
+      logo.style.top = startTop + "px";
+
+      var t = target.getBoundingClientRect();  // header is sticky, so this stays put
+      endScale = s.width ? t.width / s.width : 1;
+      distance = Math.max(1, (startTop + s.height / 2) - (t.top + t.height / 2));
+      render();
+    }
+
+    function render() {
+      var p = Math.min(1, Math.max(0, window.scrollY / distance));
+      if (reduced.matches) p = p >= 0.5 ? 1 : 0;   // same destination, no travel
+
+      logo.style.transform =
+        "translate3d(0," + (-distance * p) + "px,0) scale(" + (1 + (endScale - 1) * p) + ")";
+
+      // swap cream -> dark over the last stretch, as it crosses onto the bar
+      var swap = Math.min(1, Math.max(0, (p - 0.62) / 0.28));
+      light.style.opacity = String(1 - swap);
+      dark.style.opacity = String(swap);
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { render(); ticking = false; });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", measure);
+    window.addEventListener("orientationchange", measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    measure();
+  })();
+
   /* ---- nav drawer ----
      One menu at every width. Opens below the bar, closes on Escape, on an
      outside click, on a link, and when the viewport is resized past a

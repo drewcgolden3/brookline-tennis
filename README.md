@@ -34,6 +34,26 @@ beneath the bar, so the bar itself never has to grow.
 - A `<noscript>` block expands the drawer and hides the toggle, so the menu
   still works without JavaScript.
 
+## The logo's flight into the nav
+
+The hero logo is `position: fixed` over an in-flow `.hero-logo-slot`, and
+`script.js` flies it into the nav bar as you scroll. While scrollY is inside the
+travel distance the translation is exactly `-scrollY`, so it rides up *with* the
+page instead of sliding independently, shrinking as it goes and parking in the
+bar (~370px of scroll on desktop). `#navLogoTarget` — an invisible placeholder
+in the header — defines where it lands, so the size and position are set in CSS,
+not hard-coded in JS.
+
+Two images cross-fade en route: `logo-reverse.png` (cream) reads over the
+photography, `logo-nav.png` (dark, credit line dropped so the name stays legible
+at ~112px) reads over the white bar.
+
+**Gotcha worth knowing:** nothing between `.hero-logo` and `<body>` may create a
+stacking context or a containing block — no `transform`, `filter`, `isolation`,
+`contain`, or positive `z-index` — or the fixed logo gets trapped beneath the
+sticky header. That is why the hero stacks purely by DOM order and `.hero-seal`
+is nudged with a margin rather than a transform.
+
 ## Hero
 
 A slow cross-fading slideshow behind a single centred seal — modelled on
