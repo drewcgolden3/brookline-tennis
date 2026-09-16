@@ -14,7 +14,7 @@ window.SITE_CONFIG = {
     name: "Brookline Tennis Academy",
     shortName: "BTA",
     tagline: "Tennis in the Woods",
-    logo: "images/logo.png",
+    logo: "images/logo.svg",
   },
 
   /* ---- Hero slideshow ----
